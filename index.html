@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVENGERS — The Multiverse Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.169.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.169.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- LOADING SCREEN                        -->
+  <!-- ══════════════════════════════════════ -->
+  <div id="loader">
+    <div class="loader-rings">
+      <div class="loader-ring ring-outer"></div>
+      <div class="loader-ring ring-mid"></div>
+      <div class="loader-ring ring-inner"></div>
+    </div>
+    <div class="loader-text">
+      <span class="loader-label">ASSEMBLING</span>
+      <span class="loader-dots"><span>.</span><span>.</span><span>.</span></span>
+    </div>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- THREE.JS CANVAS                       -->
+  <!-- ══════════════════════════════════════ -->
+  <div id="canvas-container"></div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- CINEMATIC OVERLAYS                    -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="overlay scanlines"></div>
+  <div class="overlay vignette"></div>
+  <div class="overlay grain"></div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- HERO SECTION                          -->
+  <!-- ══════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-content">
+
+      <!-- Avengers Logo -->
+      <div class="logo-wrapper">
+        <div class="logo-pulse"></div>
+        <div class="logo-pulse logo-pulse-2"></div>
+        <svg class="avengers-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="logo-glow">
+              <feGaussianBlur stdDeviation="4" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#4FC3F7"/>
+              <stop offset="50%" style="stop-color:#E0E0E0"/>
+              <stop offset="100%" style="stop-color:#7C4DFF"/>
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="100" r="92" fill="none" stroke="url(#logo-gradient)" stroke-width="2.5" filter="url(#logo-glow)" class="logo-circle"/>
+          <polygon points="100,22 50,178 72,178 84,140 116,140 128,178 150,178" fill="url(#logo-gradient)" filter="url(#logo-glow)" class="logo-a"/>
+          <polygon points="100,72 90,125 110,125" fill="#000" class="logo-cutout"/>
+        </svg>
+      </div>
+
+      <!-- Title -->
+      <h1 class="hero-title" id="heroTitle">
+        <span class="title-line">THE EARTH'S</span>
+        <span class="title-line title-accent">MIGHTIEST HEROES</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-subtitle" id="heroSubtitle">
+        Explore the legends. Discover their power. Enter their universe.
+      </p>
+
+      <!-- CTA Button -->
+      <div class="cta-wrapper" id="ctaWrapper">
+        <button class="cta-button" id="enterBtn">
+          <span class="cta-border"></span>
+          <span class="cta-ripple"></span>
+          <span class="cta-text">ENTER THE AVENGERS UNIVERSE</span>
+          <span class="cta-arrow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- IRON MAN SECTION                      -->
+  <!-- ══════════════════════════════════════ -->
+  <section id="ironman">
+
+    <!-- HUD Frame -->
+    <div class="hud-frame">
+      <div class="hud-corner hud-tl"></div>
+      <div class="hud-corner hud-tr"></div>
+      <div class="hud-corner hud-bl"></div>
+      <div class="hud-corner hud-br"></div>
+      <div class="hud-line hud-line-top"></div>
+      <div class="hud-line hud-line-bottom"></div>
+      <div class="hud-line hud-line-left"></div>
+      <div class="hud-line hud-line-right"></div>
+    </div>
+
+    <!-- Section Title -->
+    <div class="im-header">
+      <div class="im-tag">ACCESSING FILE</div>
+      <h2 class="im-name">TONY STARK</h2>
+      <div class="im-alias">IRON MAN</div>
+    </div>
+
+    <!-- Arc Reactor -->
+    <div class="arc-reactor-container">
+      <div class="arc-reactor">
+        <div class="reactor-glow"></div>
+        <div class="reactor-ring reactor-ring-1"></div>
+        <div class="reactor-ring reactor-ring-2"></div>
+        <div class="reactor-ring reactor-ring-3"></div>
+        <div class="reactor-core"></div>
+        <div class="reactor-center"></div>
+      </div>
+    </div>
+
+    <!-- Dashboard Panels -->
+    <div class="dashboard">
+      <!-- Left Panel -->
+      <div class="panel panel-left">
+        <div class="panel-scan"></div>
+        <div class="panel-header">
+          <span class="panel-icon">◆</span>
+          SUIT STATUS
+          <span class="panel-status online">ONLINE</span>
+        </div>
+        <div class="panel-body">
+          <div class="stat-row">
+            <span class="stat-label">SUIT INTEGRITY</span>
+            <div class="stat-bar"><div class="stat-fill" data-value="98" data-color="#4FC3F7"></div></div>
+            <span class="stat-value">98%</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">ARC REACTOR OUTPUT</span>
+            <div class="stat-bar"><div class="stat-fill" data-value="100" data-color="#00E676"></div></div>
+            <span class="stat-value">3.0 GJ/s</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">REPULSOR CHARGE</span>
+            <div class="stat-bar"><div class="stat-fill" data-value="87" data-color="#FFD740"></div></div>
+            <span class="stat-value">87%</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">NANO RESERVES</span>
+            <div class="stat-bar"><div class="stat-fill" data-value="92" data-color="#7C4DFF"></div></div>
+            <span class="stat-value">92%</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">UNIBEAM READY</span>
+            <div class="stat-bar"><div class="stat-fill" data-value="100" data-color="#FF5252"></div></div>
+            <span class="stat-value">ARMED</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel -->
+      <div class="panel panel-right">
+        <div class="panel-scan"></div>
+        <div class="panel-header">
+          <span class="panel-icon">◆</span>
+          THREAT ANALYSIS
+          <span class="panel-status alert">ACTIVE</span>
+        </div>
+        <div class="panel-body">
+          <div class="threat-grid">
+            <div class="threat-item">
+              <div class="threat-level high">HIGH</div>
+              <span class="threat-name">THANOS</span>
+              <span class="threat-info">Power Level: ████████░░ 82%</span>
+            </div>
+            <div class="threat-item">
+              <div class="threat-level medium">MED</div>
+              <span class="threat-name">ULTRON</span>
+              <span class="threat-info">Power Level: ██████░░░░ 61%</span>
+            </div>
+            <div class="threat-item">
+              <div class="threat-level low">LOW</div>
+              <span class="threat-name">LOKI</span>
+              <span class="threat-info">Power Level: ████░░░░░░ 44%</span>
+            </div>
+          </div>
+          <div class="scan-status">
+            <span class="scan-dot"></span>
+            SCANNING MULTIVERSE...
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Panel -->
+      <div class="panel panel-bottom">
+        <div class="panel-scan"></div>
+        <div class="panel-header">
+          <span class="panel-icon">◆</span>
+          J.A.R.V.I.S. SYSTEMS
+          <span class="panel-status online">CONNECTED</span>
+        </div>
+        <div class="panel-body panel-body-horizontal">
+          <div class="sys-module">
+            <div class="sys-icon">⬡</div>
+            <div class="sys-label">AI CORE</div>
+            <div class="sys-status active">ACTIVE</div>
+          </div>
+          <div class="sys-module">
+            <div class="sys-icon">◎</div>
+            <div class="sys-label">COMMS</div>
+            <div class="sys-status active">LINKED</div>
+          </div>
+          <div class="sys-module">
+            <div class="sys-icon">⊕</div>
+            <div class="sys-label">NAVIGATION</div>
+            <div class="sys-status active">LOCKED</div>
+          </div>
+          <div class="sys-module">
+            <div class="sys-icon">◈</div>
+            <div class="sys-label">WEAPONS</div>
+            <div class="sys-status warning">STANDBY</div>
+          </div>
+          <div class="sys-module">
+            <div class="sys-icon">⬢</div>
+            <div class="sys-label">SHIELDS</div>
+            <div class="sys-status active">DEPLOYED</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Iron Man Suit Label -->
+    <div class="suit-label">
+      <span class="suit-mark">MARK LXXXV</span>
+      <span class="suit-divider">|</span>
+      <span class="suit-type">NANOTECH COMBAT SUIT</span>
+    </div>
+
+    <!-- JARVIS message -->
+    <div class="jarvis-msg" id="jarvisMsg"></div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- AUDIO TOGGLE                          -->
+  <!-- ══════════════════════════════════════ -->
+  <button class="audio-toggle" id="audioToggle" aria-label="Toggle audio">
+    <svg class="audio-icon audio-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/>
+    </svg>
+    <svg class="audio-icon audio-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" style="display:none">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <line x1="23" y1="9" x2="17" y2="15"/>
+      <line x1="17" y1="9" x2="23" y2="15"/>
+    </svg>
+  </button>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- TRANSITION FLASH                      -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="transition-flash" id="transitionFlash"></div>
+
+  <!-- GSAP from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!-- Main App (ES Module for Three.js) -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
